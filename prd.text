@@ -1,0 +1,748 @@
+Design and develop a complete modern NGO Management ERP Software for “Gramin Welfare Charitable Trust”.
+
+The software will manage multi-level hierarchy users, village operations, child welfare registration, social activity reports, Gramin Pathshala education system, accounting, reports, OTP authentication, role permissions, and dynamic location mapping.
+
+The software must look like a modern Mobile App + Professional ERP Dashboard.
+
+---
+
+## TECHNOLOGY STACK
+
+Preferred Technology:
+
+* Laravel Latest Version
+* PHP 8+
+* MySQL
+* Bootstrap 5
+* jQuery + AJAX
+* REST API Ready
+* Responsive Admin Panel
+* PWA Ready
+* Secure Authentication
+
+Optional:
+
+* Vue.js / React.js Components
+
+---
+
+1. ORGANIZATION HIERARCHY SYSTEM
+
+---
+
+The system will work in a complete chain structure.
+
+Hierarchy Levels:
+
+1. Super Admin
+2. State User
+3. Channel Partner
+4. District User
+5. Block User
+6. Panchayat User
+7. Village User
+
+All users must be dynamically connected chain-wise.
+
+Database Mapping Example:
+
+* state_id
+* channel_partner_id
+* district_id
+* block_id
+* panchayat_id
+* village_id
+* parent_id
+* root_id
+
+Features:
+
+* Dynamic Parent Mapping
+* Dynamic Root Mapping
+* Chain Relationship
+* Parent Change Anytime
+* Auto Child Relationship Update
+* Full Relational Structure
+
+---
+
+2. USER CREATION FLOW
+
+---
+
+Village User Creation Logic:
+
+If Login User = State User:
+Select:
+Channel → District → Block → Panchayat
+Then Create Village User
+
+If Login User = Channel Partner:
+Select:
+District → Block → Panchayat
+Then Create Village User
+
+If Login User = District User:
+Select:
+Block → Panchayat
+Then Create Village User
+
+If Login User = Block User:
+Select:
+Panchayat
+Then Create Village User
+
+If Login User = Panchayat User:
+Direct Create Village User
+
+Same hierarchy logic for:
+
+* Panchayat User Creation
+* Block User Creation
+* District User Creation
+* Channel Partner Creation
+
+---
+
+3. AUTHENTICATION SYSTEM
+
+---
+
+Features:
+
+* Login with OTP
+* Signup with OTP
+* Forgot Password with OTP
+* Mobile OTP Verification
+* Session Management
+* Device Login History
+* JWT/API Ready Authentication
+* Secure Authentication
+* Active/Inactive User Control
+
+---
+
+4. ROLE & PERMISSION SYSTEM
+
+---
+
+Create complete dynamic Role Permission Module.
+
+Features:
+
+* Role Master
+* Permission Master
+* Assign Permissions
+* Dynamic Menu Access
+* Submenu Permission
+* Add/Edit/Delete/View Rights
+* User-wise Permissions
+* Hierarchy-wise Restrictions
+
+Example:
+Village User cannot access State Data.
+
+---
+
+5. USER MASTER MODULE
+
+---
+
+Fields:
+
+* Name
+* Mobile
+* Email
+* Aadhaar
+* Address
+* State
+* District
+* Block
+* Panchayat
+* Village
+* User Type
+* Parent User
+* Status
+* Profile Photo
+* ID Proof Upload
+
+Features:
+
+* KYC Verification
+* Approve/Reject User
+* User Wallet
+* Login Logs
+* Activity Logs
+* Referral Chain
+
+---
+
+6. CHILD REGISTRATION SYSTEM
+   (BAL VIVAH ROKTHAM PROJECT)
+
+---
+
+Purpose:
+Prevent Child Marriage.
+
+Features:
+
+* Child Registration
+* Parent Details
+* Aadhaar Upload
+* Birth Certificate Upload
+* Child Photo Upload
+* Bond Certificate Print
+* Annual Renewal
+* Renewal Receipt Print
+* Payment Collection
+* QR Verification
+
+Registration Charges:
+
+* Age 0 to 10 Years = ₹500
+* Age 11 to 15 Years = ₹1000
+
+Benefits:
+At marriage age completion (18 years),
+NGO provides support:
+₹5000 to ₹25000
+
+System Features:
+
+* Dynamic Amount Rules
+* Child Age Calculation
+* Renewal Reminder
+* Expiry Alert
+* Bond PDF Print
+* Receipt PDF Print
+
+---
+
+7. SOCIAL ACTIVITY MANAGEMENT
+
+---
+
+Village-level social activity and camp reporting system.
+
+Features:
+
+* Activity Category Master
+* Dynamic Project Categories
+* Activity Report Submission
+* Photo Upload
+* Multiple Images Upload
+* Description
+* Date & Location
+* Beneficiary Count
+
+Example Categories:
+
+* Swachhta Abhiyan
+* Mahila Sashaktikaran
+* Arthik Sahayata
+* Krishi Sahayata
+* Rozgar Prashikshan
+* Health Camp
+* Education Awareness
+
+Frontend Features:
+
+* Public Activity Gallery
+* Project Listing
+* Village-wise Reports
+* Photo Gallery
+* NGO Impact Dashboard
+
+---
+
+8. GRAMIN PATHSHALA MODULE
+
+---
+
+Village Education Management System.
+
+Features:
+
+* Free Student Registration
+* Teacher/Village User Login
+* Attendance System
+* Daily Class Management
+* 2 Hour Class Tracking
+* Subject Management
+* Homework
+* Student Progress
+* Certificate Print
+* Student ID Card
+
+Teacher Features:
+
+* Take Attendance
+* Upload Notes
+* Add Result
+* Add Activities
+
+Student Features:
+
+* Attendance History
+* Performance Report
+* Certificate Download
+
+---
+
+9. ACCOUNTING & PAYMENT SYSTEM
+
+---
+
+Features:
+
+* Wallet System
+* Income Entry
+* Expense Entry
+* Donation Entry
+* Renewal Collection
+* Receipt Generation
+* Payment Gateway Integration
+* Transaction History
+* Ledger
+* Cashbook
+* Passbook
+
+Reports:
+
+* State-wise Collection
+* District-wise Collection
+* Panchayat-wise Collection
+* Village-wise Collection
+
+---
+
+10. REPORTS & ANALYTICS
+
+---
+
+Dashboard Reports:
+
+* Total Users
+* Total Villages
+* Total Students
+* Total Child Registrations
+* Active Renewals
+* Pending Renewals
+* Activity Reports
+* Donation Reports
+* Monthly Growth
+
+Charts:
+
+* State-wise Performance
+* Village Activity Graph
+* Renewal Collection Graph
+
+Export:
+
+* PDF
+* Excel
+* CSV
+
+---
+
+11. WEBSITE FRONTEND
+
+---
+
+Public NGO Website Features:
+
+* About NGO
+* Mission & Vision
+* Projects
+* Activity Gallery
+* Volunteer Registration
+* Donation Page
+* Contact Page
+* Success Stories
+* Public Reports
+* Village-wise Activity Showcase
+
+---
+
+12. DOCUMENT & PRINT SYSTEM
+
+---
+
+Generate:
+
+* Bond Certificate
+* Renewal Receipt
+* User ID Card
+* Student ID Card
+* Donation Receipt
+* Activity Report PDF
+
+---
+
+13. NOTIFICATION SYSTEM
+
+---
+
+Features:
+
+* SMS Notifications
+* WhatsApp Notifications
+* Email Notifications
+* Renewal Reminder
+* Registration Confirmation
+* Activity Approval Alert
+
+---
+
+14. SECURITY FEATURES
+
+---
+
+* Secure OTP Authentication
+* SQL Injection Protection
+* XSS Protection
+* CSRF Protection
+* Role-based Access
+* File Validation
+* Activity Tracking
+* Audit Logs
+
+---
+
+15. ADMIN PANEL MODULES
+
+---
+
+Sidebar Modules:
+
+* Dashboard
+* User Management
+* Hierarchy Management
+* Child Registration
+* Renewals
+* Activities
+* Gramin Pathshala
+* Students
+* Attendance
+* Finance
+* Reports
+* Settings
+* Website Management
+* Notifications
+* Role Permission
+
+---
+
+16. UI/UX DESIGN REQUIREMENTS
+
+---
+
+The software must look like:
+
+* Android Mobile App
+* Modern CRM
+* Banking Dashboard
+* ERP Management System
+
+UI Style:
+
+* Modern
+* Premium
+* Fast
+* Minimal
+* Professional
+* Mobile Friendly
+* Smooth Animations
+* Rounded Cards
+* Soft Shadows
+* Interactive Dashboard
+
+---
+
+17. MOBILE-FIRST EXPERIENCE
+
+---
+
+Fully optimized for:
+
+* Mobile Phones
+* Tablets
+* Desktop
+* Large Screens
+
+Mobile Features:
+
+* Bottom Navigation
+* Slide Sidebar
+* Touch Friendly Buttons
+* Floating Action Button (FAB)
+* Card Based UI
+* Swipe Friendly Design
+* Fast Loading
+* PWA Support
+
+---
+
+18. DESKTOP ERP EXPERIENCE
+
+---
+
+Desktop Features:
+
+* Fixed Sidebar
+* Expandable Menu
+* Sticky Header
+* Dashboard Widgets
+* Statistics Cards
+* Charts & Analytics
+* Global Search
+* Notification Dropdown
+* User Profile Dropdown
+
+---
+
+19. DASHBOARD DESIGN
+
+---
+
+Dashboard Cards:
+
+* Total Villages
+* Total Students
+* Active Registrations
+* Pending Renewals
+* Social Activities
+* Total Collection
+* Monthly Reports
+
+Dashboard Features:
+
+* Animated Counters
+* Progress Bars
+* Pie Charts
+* Line Charts
+* Activity Timeline
+* Recent Activity Feed
+
+---
+
+20. FORM UI REQUIREMENTS
+
+---
+
+All forms should be:
+
+* AJAX Based
+* Multi-Step
+* Mobile Friendly
+* Validation Enabled
+
+Features:
+
+* Dynamic Dropdowns
+* Select2 Search
+* Image Preview
+* Camera Upload
+* Drag & Drop Upload
+* Instant Validation
+
+---
+
+21. TABLE UI REQUIREMENTS
+
+---
+
+Use:
+
+* DataTables
+* Server Side Pagination
+* Export Buttons
+* Filter Search
+* Responsive Tables
+
+Features:
+
+* Excel Export
+* PDF Export
+* Print Button
+* Date Filters
+* Status Filters
+* Quick Search
+
+---
+
+22. THEME SYSTEM
+
+---
+
+Provide:
+
+* Light Mode
+* Dark Mode
+* Dynamic Theme Colors
+* NGO Branding Colors
+
+---
+
+23. ANIMATION & EFFECTS
+
+---
+
+Use:
+
+* Page Transition
+* Card Hover Animation
+* Smooth Dropdown
+* Skeleton Loading
+* Toast Notifications
+* SweetAlert Popups
+* Loading Spinner
+
+---
+
+24. PWA & APP FEATURES
+
+---
+
+Software should support:
+
+* Progressive Web App (PWA)
+* Install as Mobile App
+* Push Notifications
+* Offline Support
+* App Splash Screen
+* App Icons
+
+---
+
+25. USER EXPERIENCE REQUIREMENTS
+
+---
+
+The software must be:
+
+* Easy for village users
+* Fast on low internet
+* Simple Navigation
+* One-click Actions
+* Minimal Training Required
+
+Special Focus:
+Village-level users may not be highly technical.
+
+Therefore UI should be:
+
+* Simple
+* Hindi Friendly
+* Icon Based
+* Easy to Operate
+
+---
+
+26. LOGIN & AUTH UI
+
+---
+
+Modern Login System:
+
+* Mobile Number Login
+* OTP Verification
+* Animated Login Screen
+* NGO Branding
+* Secure Authentication
+* Remember Login
+
+---
+
+27. PROFILE & USER UI
+
+---
+
+Each user should have:
+
+* Profile Dashboard
+* Wallet Summary
+* Activity Summary
+* User Level Badge
+* Referral Chain Information
+
+---
+
+28. PHOTO & MEDIA MANAGEMENT
+
+---
+
+Image Upload Features:
+
+* Camera Capture
+* Gallery Upload
+* Compression
+* Image Preview
+* Multiple Upload
+* Activity Album View
+
+---
+
+29. EXTRA FEATURES
+
+---
+
+* Dynamic Location Master
+* State/District/Block/Panchayat/Village Management
+* Geo Mapping
+* QR Verification
+* Multi-language Support
+* Mobile App API Ready
+* Volunteer Management
+* Donation Tracking
+* NGO Member Management
+* Franchise/Partner Commission System
+
+---
+
+30. DATABASE STRUCTURE REQUIREMENT
+
+---
+
+Create optimized database design with:
+
+* Proper Foreign Keys
+* Indexing
+* Dynamic Hierarchy Tables
+* Soft Delete
+* Migration Files
+* Seeder Files
+* Activity Logs
+
+---
+
+31. FINAL REQUIREMENT
+
+---
+
+Build a complete scalable NGO ERP + Village Development Management Software for “Gramin Welfare Charitable Trust”.
+
+The software must combine:
+
+* NGO Management System
+* Village Development System
+* Child Welfare Management
+* Social Activity Tracking
+* Education Management
+* Financial Management
+* Mobile App Experience
+* Modern ERP Dashboard
+
+The software must be:
+
+* Secure
+* Scalable
+* Fast
+* Mobile Responsive
+* Production Ready
+* User Friendly
+* Modern UI Based
+* Village Friendly
+* Corporate Professional
