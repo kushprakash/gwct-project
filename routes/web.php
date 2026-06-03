@@ -78,3 +78,65 @@ Route::middleware('auth')->group(function () {
 Route::get('/student-portal', [App\Http\Controllers\StudentPortalController::class, 'index'])->name('student.portal');
 
 Route::get('gallery', [App\Http\Controllers\GalleryController::class, 'index'])->name('gallery.index');
+
+// ===== Public Website Pages =====
+Route::get('/', function () { return view('website.index'); })->name('website.home');
+Route::get('/about',     function () { return view('website.about'); })->name('website.about');
+Route::get('/services',  function () { return view('website.services'); })->name('website.services');
+Route::get('/bal-vivah', function () { return view('website.bal-vivah'); })->name('website.bal-vivah');
+Route::get('/gallery-page', function () { return view('website.gallery'); })->name('website.gallery');
+Route::get('/apply',     function () { return view('website.apply'); })->name('website.apply');
+Route::get('/contact',   function () { return view('website.contact'); })->name('website.contact');
+Route::post('/contact',  function (\Illuminate\Http\Request $request) {
+    $request->validate([
+        'name'    => 'required|string|max:100',
+        'mobile'  => 'required|digits_between:10,12',
+        'subject' => 'required|string',
+        'message' => 'required|string|min:10',
+    ]);
+    // TODO: save to DB or send email
+    return back()->with('success', 'Thank you! Your message has been received. We will contact you soon.');
+})->name('website.contact.post');
+
+Route::get('/donate', function () {
+    return view('website.donate');
+})->name('website.donate');
+
+Route::post('/donate', function (\Illuminate\Http\Request $request) {
+    $request->validate([
+        'donor_name'     => 'required|string|max:100',
+        'donor_phone'    => 'required|digits_between:10,12',
+        'amount'         => 'required|numeric|min:1',
+        'transaction_id' => 'required|string|max:100',
+        'payment_mode'   => 'required|string',
+        'remarks'        => 'nullable|string|max:255',
+    ]);
+
+    try {
+        if (\Schema::hasTable('donations')) {
+            $exists = \DB::table('donations')->where('transaction_id', $request->transaction_id)->exists();
+            if ($exists) {
+                return back()->withErrors(['transaction_id' => 'This Transaction ID has already been submitted.'])->withInput();
+            }
+            
+            \DB::table('donations')->insert([
+                'donor_name'     => $request->donor_name,
+                'donor_phone'    => $request->donor_phone,
+                'amount'         => $request->amount,
+                'transaction_id' => $request->transaction_id,
+                'payment_mode'   => $request->payment_mode,
+                'remarks'        => $request->remarks,
+                'created_at'     => now(),
+                'updated_at'     => now(),
+            ]);
+        } else {
+            \Log::info('Donations table does not exist. Submitted info: ' . json_encode($request->all()));
+        }
+    } catch (\Exception $e) {
+        \Log::error('Donation submission error: ' . $e->getMessage());
+    }
+
+    return back()->with('success', 'Thank you! Your donation details have been submitted. Our team will verify and update your receipt shortly.');
+})->name('website.donate.post');
+
+

@@ -19,37 +19,54 @@
     <header class="top-header">
         <div class="container">
             <div class="header-left">
-                <div class="logo">
+                <a href="{{ route('website.home') }}" class="logo">
                     <div class="logo-icon"><img src="{{ asset('assets/images/icon.jpg') }}" alt="GWCT Logo"
                             style="width: 100%; height: 100%; object-fit: cover;"></div>
                     <div class="logo-text">
                         <div>ग्रामीण विकास एवं कल्याण</div>
                         <small>Gramin Vikas Aur Kalyaan</small>
                     </div>
-                </div>
+                </a>
                 <div class="helpline">
                     <i class="fas fa-phone"></i> Helpline: +91 9102132444
                 </div>
             </div>
-            <button class="btn-donate">Donate Now <i class="fas fa-heart"></i></button>
+            <div class="header-right">
+                <a href="{{ route('website.donate') }}" class="btn-donate">Donate Now <i class="fas fa-heart"></i></a>
+
+                @auth
+                    <a href="{{ route('home') }}" class="btn-donate btn-login">
+                        <i class="fas fa-tachometer-alt"></i> Dashboard
+                    </a>
+                @else
+                    <a href="{{ route('login') }}" class="btn-donate btn-login">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </a>
+                @endauth
+
+                <button class="menu-toggle" id="mobile-menu" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
     </header>
 
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About Us</a></li>
-                <li><a href="#services" class="nav-link">Services</a></li>
-                <li><a href="#bal-vivah" class="nav-link">Bal Vivah</a></li>
-                <li><a href="#gallery" class="nav-link">Gallery</a></li>
-                <li><a href="#apply" class="nav-link">Apply Now</a></li>
-                <li><a href="pathshala" class="nav-link">Login</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
+            <!-- Nav links -->
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="{{ route('website.home') }}"     class="nav-link {{ request()->routeIs('website.home')     ? 'active-link' : '' }}"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="{{ route('website.about') }}"    class="nav-link {{ request()->routeIs('website.about')    ? 'active-link' : '' }}"><i class="fas fa-info-circle"></i> About Us</a></li>
+                <li><a href="{{ route('website.services') }}" class="nav-link {{ request()->routeIs('website.services') ? 'active-link' : '' }}"><i class="fas fa-th-large"></i> Services</a></li>
+                <li><a href="{{ route('website.bal-vivah') }}" class="nav-link {{ request()->routeIs('website.bal-vivah') ? 'active-link' : '' }}"><i class="fas fa-heart"></i> Bal Vivah</a></li>
+                <li><a href="{{ route('website.gallery') }}"  class="nav-link {{ request()->routeIs('website.gallery')  ? 'active-link' : '' }}"><i class="fas fa-images"></i> Gallery</a></li>
+                <li><a href="{{ route('website.apply') }}"    class="nav-link {{ request()->routeIs('website.apply')    ? 'active-link' : '' }}"><i class="fas fa-file-alt"></i> Apply Now</a></li>
+                <li><a href="{{ route('website.contact') }}"  class="nav-link {{ request()->routeIs('website.contact')  ? 'active-link' : '' }}"><i class="fas fa-phone"></i> Contact</a></li>
+               
             </ul>
         </div>
-    </nav>
+    </nav>`
 
     @yield('content')
     <!-- Ways to Give & Social Media & Gallery Highlights Footer -->
@@ -407,6 +424,36 @@
             });
         }
     </script>
+
+    <style>
+.hero {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    padding: 80px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: -23px;
+}
+
+@media (max-width: 992px) {
+    .navbar::before {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.55);
+        z-index: 9998;
+    }
+}
+
+@media (max-width: 992px) {
+    .navbar:has(.nav-menu.active)::before {
+        display: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+}
+    </style>
 </body>
 
 </html>

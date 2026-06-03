@@ -1,64 +1,79 @@
-﻿@extends('layouts.website')
+@extends('layouts.website')
 @section('content')
+  
   
     <!-- Hero Section with Carousel -->
     <section id="home" class="hero">
         <div class="carousel">
             <!-- Slide 1: Community Empowerment -->
-            <div class="carousel-item active" data-slide-title="Community Empowerment">
-                <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=1200&h=500&fit=crop"
+            <div class="carousel-item active"
+                data-title="Community Empowerment"
+                data-desc="Building stronger, more resilient rural communities">
+                <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=1600&h=900&fit=crop"
                     alt="Rural Community" class="hero-img">
-                <div class="slide-content">
+                <!-- Desktop overlay content -->
+                <div class="slide-content desktop-slide-content">
+                    <div class="slide-badge"><i class="fas fa-leaf"></i> GWCT Initiative</div>
                     <h2>Community Empowerment</h2>
                     <p>Building stronger, more resilient rural communities</p>
                 </div>
             </div>
 
-
-            <!-- Slide 4: Health Services -->
-            <div class="carousel-item" data-slide-title="Health Services">
-                <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&h=500&fit=crop"
+            <!-- Slide 2: Health Services -->
+            <div class="carousel-item"
+                data-title="Healthcare Access"
+                data-desc="Making healthcare accessible to every household">
+                <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1600&h=900&fit=crop"
                     alt="Health Care" class="hero-img">
-                <div class="slide-content">
+                <div class="slide-content desktop-slide-content">
+                    <div class="slide-badge"><i class="fas fa-heart"></i> Health Services</div>
                     <h2>Healthcare Access</h2>
                     <p>Making healthcare accessible to every household</p>
                 </div>
             </div>
 
-            <!-- Slide 5: Youth Development -->
-            <div class="carousel-item" data-slide-title="Youth Development">
-                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=500&fit=crop"
+            <!-- Slide 3: Youth Development -->
+            <div class="carousel-item"
+                data-title="Youth Skill Development"
+                data-desc="Preparing youth for economic opportunities">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1600&h=900&fit=crop"
                     alt="Youth Programs" class="hero-img">
-                <div class="slide-content">
+                <div class="slide-content desktop-slide-content">
+                    <div class="slide-badge"><i class="fas fa-graduation-cap"></i> Youth Program</div>
                     <h2>Youth Skill Development</h2>
                     <p>Preparing youth for economic opportunities</p>
                 </div>
             </div>
 
-            <!-- Slide 6: Agriculture Support -->
-            <div class="carousel-item" data-slide-title="Agriculture Support">
-                <img src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=1200&h=500&fit=crop"
+            <!-- Slide 4: Agriculture Support -->
+            <div class="carousel-item"
+                data-title="Agricultural Support"
+                data-desc="Improving farming practices and rural livelihoods">
+                <img src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=1600&h=900&fit=crop"
                     alt="Agriculture" class="hero-img">
-                <div class="slide-content">
+                <div class="slide-content desktop-slide-content">
+                    <div class="slide-badge"><i class="fas fa-tractor"></i> Agriculture</div>
                     <h2>Agricultural Support</h2>
                     <p>Improving farming practices and rural livelihoods</p>
                 </div>
             </div>
         </div>
 
+        <!-- Dark gradient overlay -->
         <div class="hero-overlay"></div>
 
+        <!-- Hero main content (title + CTA) - desktop only -->
         <div class="hero-content">
             <div class="hero-text">
                 <h1>
                     <span class="hero-title-en">Empowering Rural India</span>
-                    <span class="hero-title-hi">à¤—à¥à¤°à¤¾à¤®à¥€à¤£ à¤­à¤¾à¤°à¤¤ à¤•à¤¾ à¤¸à¤¶à¤•à¥à¤¤à¤¿à¤•à¤°à¤£</span>
+                    <span class="hero-title-hi">ग्रामीण भारत का सशक्तिकरण</span>
                 </h1>
-                <p class="hero-subtitle">Our Mission in Action | à¤¹à¤®à¤¾à¤°à¤¾ à¤®à¤¿à¤¶à¤¨ à¤¸à¤•à¥à¤°à¤¿à¤¯ à¤¹à¥ˆ</p>
+                <p class="hero-subtitle">Our Mission in Action | हमारा मिशन सक्रिय है</p>
             </div>
             <div class="hero-cta-section">
                 <div class="hero-cta">
-                    <button class="btn-donate-large">Donate to Make a Difference</button>
+                    <a href="{{ route('website.donate') }}" class="btn-donate-large">Donate to Make a Difference</a>
                 </div>
                 <div class="hero-join">
                     <h3>Passionate to Serve?</h3>
@@ -77,121 +92,128 @@
             <span class="indicator" onclick="goToSlide(1)"></span>
             <span class="indicator" onclick="goToSlide(2)"></span>
             <span class="indicator" onclick="goToSlide(3)"></span>
-            <span class="indicator" onclick="goToSlide(4)"></span>
-            <span class="indicator" onclick="goToSlide(5)"></span>
         </div>
     </section>
+
+    <!-- Mobile Caption Strip: shown ONLY on mobile, below the banner -->
+    <div class="hero-mobile-caption" id="heroMobileCaption">
+        <div class="mobile-caption-icon"><i class="fas fa-leaf"></i></div>
+        <div class="mobile-caption-text">
+            <h3 id="mobileCaptionTitle">Community Empowerment</h3>
+            <p id="mobileCaptionText">Building stronger, more resilient rural communities</p>
+        </div>
+    </div>
 
     <!-- Objectives Section -->
     <section id="about" class="objectives-section">
         <div class="container">
-            <h2>à¤¹à¤®à¤¾à¤°à¥‡ à¤‰à¤¦à¥à¤¦à¥‡à¤¶à¥à¤¯ / Our Objectives</h2>
-            <div class="row">
+            <h2>हमारे उद्देश्य / Our Objectives</h2>
+            <div class="objectives-grid row">
                 <!-- Objective 1: Education -->
                 <div class="col-md-4 mb-4">
-                    <div class="objective-card">
-                    <div class="objective-icon">
-                        <i class="fas fa-book"></i>
-                    </div>
-                    <h3>à¤¶à¤¿à¤•à¥à¤·à¤¾ à¤”à¤° à¤œà¤¾à¤—à¤°à¥‚à¤•à¤¤à¤¾</h3>
-                    <p>à¤—à¥à¤°à¤¾à¤®à¥€à¤£ à¤•à¥à¤·à¥‡à¤¤à¥à¤°à¥‹à¤‚ à¤®à¥‡à¤‚ à¤¶à¤¿à¤•à¥à¤·à¤¾ à¤•à¥‹ à¤¬à¤¢à¤¼à¤¾à¤µà¤¾ à¤¦à¥‡à¤¨à¤¾ à¤”à¤° à¤œà¤¾à¤—à¤°à¥‚à¤•à¤¤à¤¾ à¤«à¥ˆà¤²à¤¾à¤¨à¤¾à¥¤</p>
-                    <p class="objective-en">Education & Awareness - Rural areas education promotion</p>
+                    <div class="objective-card h-100">
+                        <div class="objective-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3>शिक्षा और जागरूकता</h3>
+                        <p>ग्रामीण क्षेत्रों में शिक्षा को बढ़ावा देना और जागरूकता फैलाना।</p>
+                        <p class="objective-en">Education & Awareness - Rural areas education promotion</p>
                     </div>
                 </div>
 
                 <!-- Objective 2: Child Marriage Prevention -->
                 <div class="col-md-4 mb-4">
-                    <div class="objective-card">
-                    <div class="objective-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>à¤¬à¤¾à¤² à¤µà¤¿à¤µà¤¾à¤¹ à¤°à¥‹à¤•à¤¥à¤¾à¤®</h3>
-                    <p>à¤¬à¤¾à¤² à¤µà¤¿à¤µà¤¾à¤¹ à¤•à¥‡ à¤–à¤¿à¤²à¤¾à¤« à¤•à¤¾à¤°à¥à¤¯ à¤•à¤°à¤¨à¤¾ à¤”à¤° à¤¸à¤®à¤¾à¤œ à¤•à¥‡ à¤¸à¤šà¥‡à¤¤à¤¨ à¤µ à¤¸à¤‚à¤šà¥‡à¤¤à¤¨ à¤•à¥‡ à¤²à¤¿à¤ à¤•à¤¾à¤°à¥à¤¯ à¤•à¤°à¤¨à¤¾à¥¤</p>
-                    <p class="objective-en">Child Marriage Prevention - Awareness campaigns</p>
+                    <div class="objective-card h-100">
+                        <div class="objective-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>बाल विवाह रोकथाम</h3>
+                        <p>बाल विवाह के खिलाफ कार्य करना और समाज के सचेतन व संचेतन के लिए कार्य करना।</p>
+                        <p class="objective-en">Child Marriage Prevention - Awareness campaigns</p>
                     </div>
                 </div>
 
                 <!-- Objective 3: Financial Assistance -->
                 <div class="col-md-4 mb-4">
-                    <div class="objective-card">
-                    <div class="objective-icon">
-                        <i class="fas fa-rupee-sign"></i>
-                    </div>
-                    <h3>à¤†à¤°à¥à¤¥à¤¿à¤• à¤¸à¤¹à¤¾à¤¯à¤¤à¤¾ à¤à¤µà¤‚ à¤¬à¥‡à¤°à¥‹à¤œà¤—à¤¾à¤°</h3>
-                    <p>à¤—à¤°à¥€à¤¬ à¤µ à¤œà¤°à¥‚à¤°à¤¤à¤®à¤‚à¤¦ à¤²à¥‹à¤—à¥‹à¤‚ à¤•à¥‹ à¤†à¤°à¥à¤¥à¤¿à¤• à¤¸à¤¹à¤¾à¤¯à¤¤à¤¾ à¤•à¤¾ à¤¸à¤‚à¤—à¤ à¤¨ à¤•à¤°à¤¨à¤¾à¥¤</p>
-                    <p class="objective-en">Financial Aid & Employment - Economic support</p>
+                    <div class="objective-card h-100">
+                        <div class="objective-icon">
+                            <i class="fas fa-rupee-sign"></i>
+                        </div>
+                        <h3>आर्थिक सहायता एवं बेरोजगार</h3>
+                        <p>गरीब व जरूरतमंद लोगों को आर्थिक सहायता का संगठन करना।</p>
+                        <p class="objective-en">Financial Aid & Employment - Economic support</p>
                     </div>
                 </div>
 
                 <!-- Objective 4: Banking Services -->
                 <div class="col-md-4 mb-4">
-                    <div class="objective-card">
-                    <div class="objective-icon">
-                        <i class="fas fa-university"></i>
-                    </div>
-                    <h3>à¤¬à¥ˆà¤‚à¤•à¤¿à¤‚à¤— à¤¸à¥‡à¤µà¤¾à¤à¤‚</h3>
-                    <p>à¤¬à¥ˆà¤‚à¤•à¤¿à¤‚à¤— à¤¸à¥‡à¤µà¤¾à¤“à¤‚ à¤•à¥‡ à¤®à¤¾à¤§à¥à¤¯à¤® à¤¸à¥‡ à¤µà¤¿à¤¤à¥à¤¤à¥€à¤¯ à¤¸à¤®à¤¾à¤µà¥‡à¤¶à¤¨ à¤”à¤° à¤¬à¥‡à¤°à¥‹à¤œà¤—à¤¾à¤°à¥€ à¤•à¥‡ à¤…à¤‚à¤¤à¤° à¤‰à¤¤à¥à¤ªà¤²à¤¬à¥à¤§ à¤•à¤°à¤¾à¤¨à¤¾à¥¤</p>
-                    <p class="objective-en">Banking Services (Suvidha Mitra) - Financial inclusion</p>
+                    <div class="objective-card h-100">
+                        <div class="objective-icon">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <h3>बैंकिंग सेवाएं</h3>
+                        <p>बैंकिंग सेवाओं के माध्यम से वित्तीय समावेशन और बेरोजगारी के अंतर उत्पलब्ध कराना।</p>
+                        <p class="objective-en">Banking Services (Suvidha Mitra) - Financial inclusion</p>
                     </div>
                 </div>
 
                 <!-- Objective 5: Health Services -->
                 <div class="col-md-4 mb-4">
-                    <div class="objective-card">
-                    <div class="objective-icon">
-                        <i class="fas fa-heart"></i>
-                    </div>
-                    <h3>à¤¸à¥à¤µà¤¾à¤¸à¥à¤¥à¥à¤¯ à¤¸à¥‡à¤µà¤¾à¤à¤‚</h3>
-                    <p>à¤¸à¥à¤µà¤¾à¤¸à¥à¤¥à¥à¤¯ à¤•à¤¾à¤°à¥à¤¡ / à¤¸à¥à¤µà¤¾à¤¸à¥à¤¥à¥à¤¯ à¤¸à¥‡à¤µà¤¾à¤“à¤‚ à¤•à¥€ à¤¸à¥à¤µà¤¿à¤§à¤¾ à¤‰à¤ªà¤²à¤¬à¥à¤§ à¤•à¤°à¤¾à¤¨à¤¾à¥¤</p>
-                    <p class="objective-en">Health Services - Healthcare accessibility</p>
+                    <div class="objective-card h-100">
+                        <div class="objective-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>स्वास्थ्य सेवाएं</h3>
+                        <p>स्वास्थ्य कार्ड / स्वास्थ्य सेवाओं की सुविधा उपलब्ध कराना।</p>
+                        <p class="objective-en">Health Services - Healthcare accessibility</p>
                     </div>
                 </div>
 
                 <!-- Objective 6: Women Empowerment -->
                 <div class="col-md-4 mb-4">
-                    <div class="objective-card">
-                    <div class="objective-icon">
-                        <i class="fas fa-female"></i>
-                    </div>
-                    <h3>à¤®à¤¹à¤¿à¤²à¤¾ à¤¸à¤¶à¤•à¥à¤¤à¤¿à¤•à¤°à¤£</h3>
-                    <p>à¤®à¤¹à¤¿à¤²à¤¾à¤“à¤‚ à¤•à¥‹ à¤†à¤¤à¥à¤®à¤¨à¤¿à¤°à¥à¤­à¤° à¤”à¤° à¤¸à¥à¤µà¤¾à¤µà¤²à¤‚à¤¬à¥€ à¤¬à¤¨à¤¾à¤¨à¥‡ à¤•à¥‡ à¤²à¤¿à¤ à¤•à¤¾à¤°à¥à¤¯ à¤•à¤°à¤¨à¤¾ à¤‰à¤¨à¤•à¥‡ à¤…à¤§à¤¿à¤•à¤¾à¤° à¤•à¥‡ à¤²à¤¿à¤ à¤•à¤¾à¤°à¥à¤¯ à¤•à¤°à¤¨à¤¾à¥¤</p>
-                    <p class="objective-en">Women Empowerment - Rights & Independence</p>
+                    <div class="objective-card h-100">
+                        <div class="objective-icon">
+                            <i class="fas fa-female"></i>
+                        </div>
+                        <h3>महिला सशक्तिकरण</h3>
+                        <p>महिलाओं को आत्मनिर्भर और स्वावलंबी बनाने के लिए कार्य करना उनके अधिकार के लिए कार्य करना।</p>
+                        <p class="objective-en">Women Empowerment - Rights & Independence</p>
                     </div>
                 </div>
 
                 <!-- Objective 7: Agriculture Support -->
                 <div class="col-md-4 mb-4">
-                    <div class="objective-card">
-                    <div class="objective-icon">
-                        <i class="fas fa-tractor"></i>
-                    </div>
-                    <h3>à¤•à¥ƒà¤·à¤¿ à¤¸à¤¹à¤¾à¤¯à¤¤à¤¾ à¤à¤µà¤‚ à¤ªà¥à¤°à¤¶à¤¿à¤•à¥à¤·à¤£</h3>
-                    <p>à¤•à¤¿à¤¸à¤¾à¤¨à¥‹à¤‚ à¤•à¥‹ à¤†à¤§à¥à¤¨à¤¿à¤• à¤•à¥ƒà¤·à¤¿ à¤¸à¤¹à¤¾à¤¯à¤¤à¤¾ à¤”à¤° à¤ªà¥à¤°à¤¶à¤¿à¤•à¥à¤·à¤£ à¤¸à¤¹à¤¾à¤¯à¤¤à¤¾ à¤ªà¥à¤°à¤¦à¤¾à¤¨ à¤”à¤° à¤¸à¤¹à¤¯à¥‹à¤— à¤‰à¤¤à¥à¤ªà¤²à¤¬à¥à¤§ à¤•à¤°à¤¾à¤¨à¤¾à¥¤</p>
-                    <p class="objective-en">Agriculture Support - Farming & Training</p>
+                    <div class="objective-card h-100">
+                        <div class="objective-icon">
+                            <i class="fas fa-tractor"></i>
+                        </div>
+                        <h3>कृषि सहायता एवं प्रशिक्षण</h3>
+                        <p>किसानों को आधुनिक कृषि सहायता और प्रशिक्षण सहायता प्रदान और सहयोग उत्पलब्ध कराना।</p>
+                        <p class="objective-en">Agriculture Support - Farming & Training</p>
                     </div>
                 </div>
 
                 <!-- Objective 8: Equality & Cooperation -->
                 <div class="col-md-4 mb-4">
-                    <div class="objective-card">
-                    <div class="objective-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <h3>à¤¸à¤®à¤¾à¤¨à¤¤à¤¾ à¤”à¤° à¤¸à¤¹à¤¯à¥‹à¤—</h3>
-                    <p>à¤¸à¤®à¤¾à¤œ à¤®à¥‡à¤‚ à¤¸à¤®à¤¾à¤¨à¤¤à¤¾, à¤­à¤¾à¤ˆà¤šà¤¾à¤°à¥‡, à¤¸à¤®à¤°à¤¸à¤¤à¤¾ à¤”à¤° à¤¸à¤¹à¤¯à¥‹à¤— à¤‰à¤¤à¥à¤ªà¤²à¤¬à¥à¤§ à¤•à¤°à¤¾à¤¨à¤¾à¥¤</p>
-                    <p class="objective-en">Equality & Cooperation - Community harmony</p>
+                    <div class="objective-card h-100">
+                        <div class="objective-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3>समानता और सहयोग</h3>
+                        <p>समाज में समानता, भाईचारे, समरसता और सहयोग उत्पलब्ध कराना।</p>
+                        <p class="objective-en">Equality & Cooperation - Community harmony</p>
                     </div>
                 </div>
 
                 <!-- Objective 9: Gramin Pathshala -->
                 <div class="col-md-4 mb-4">
-                    <div class="objective-card">
-                    <div class="objective-icon">
-                        <i class="fas fa-school"></i>
-                    </div>
-                    <h3>à¤—à¥à¤°à¤¾à¤®à¥€à¤¨ à¤ªà¤¾à¤ à¤¶à¤¾à¤²à¤¾</h3>
-                    <p>à¤—à¥à¤°à¤¾à¤®à¥€à¤£ à¤•à¥à¤·à¥‡à¤¤à¥à¤°à¥‹à¤‚ à¤•à¥‡ à¤¬à¤šà¥à¤šà¥‹à¤‚ à¤•à¥‹ à¤—à¥à¤£à¤µà¤¤à¥à¤¤à¤¾à¤ªà¥‚à¤°à¥à¤£ à¤¶à¤¿à¤•à¥à¤·à¤¾ à¤ªà¥à¤°à¤¦à¤¾à¤¨ à¤•à¤°à¤¨à¤¾ à¤”à¤° à¤¸à¤¶à¤•à¥à¤¤ à¤­à¤µà¤¿à¤·à¥à¤¯ à¤¬à¤¨à¤¾à¤¨à¤¾à¥¤</p>
-                    <p class="objective-en">Gramin Pathshala - Rural School Education</p>
+                    <div class="objective-card h-100">
+                        <div class="objective-icon">
+                            <i class="fas fa-school"></i>
+                        </div>
+                        <h3>ग्रामीन पाठशाला</h3>
+                        <p>ग्रामीण क्षेत्रों के बच्चों को गुणवत्तापूर्ण शिक्षा प्रदान करना और सशक्त भविष्य बनाना।</p>
+                        <p class="objective-en">Gramin Pathshala - Rural School Education</p>
                     </div>
                 </div>
             </div>
@@ -201,7 +223,7 @@
     <!-- Quick Services Section -->
     <section id="services" class="services-quick">
         <div class="container">
-            <h2>Quick Apply for Services / à¤¸à¥‡à¤µà¤¾à¤“à¤‚ à¤•à¥‡ à¤²à¤¿à¤ à¤¤à¥à¤°à¤‚à¤¤ à¤†à¤µà¥‡à¤¦à¤¨ à¤•à¤°à¥‡à¤‚</h2>
+            <h2>Quick Apply for Services / सेवाओं के लिए तुरंत आवेदन करें</h2>
 
             <div class="service-tabs">
                 <button class="tab-btn active" onclick="switchTab('loans')">Loan Services (Personal/Business/Kisan
@@ -217,7 +239,7 @@
                         <div class="service-box-icon">
                             <i class="fas fa-money-bill"></i>
                         </div>
-                        <h3>All Type Loan Services<br><small>(à¤¸à¤­à¥€ à¤ªà¥à¤°à¤•à¤¾à¤° à¤•à¥€ à¤¬à¤‚à¤¦ à¤²à¥‡à¤µà¤¾à¤ˆ)</small></h3>
+                        <h3>All Type Loan Services<br><small>(सभी प्रकार की बंद लेवाई)</small></h3>
                         <p>All Type Loan Services can be soanaded for personal Loan, Business Kiran Loan, Kisan Loan,
                             business and Opportunities.</p>
                         <div class="box-buttons">
@@ -230,7 +252,7 @@
                         <div class="service-box-icon">
                             <i class="fas fa-bank"></i>
                         </div>
-                        <h3>Government Schemes<br><small>(à¤¸à¤°à¤•à¤¾à¤°à¥€ à¤¯à¥‹à¤œà¤¨à¤¾à¤)</small></h3>
+                        <h3>Government Schemes<br><small>(सरकारी योजनाए)</small></h3>
                         <p>Government Schemes of Education, Schemes.</p>
                         <button class="btn-scheme">View Schemes</button>
                     </div>
@@ -239,7 +261,7 @@
                         <div class="service-box-icon">
                             <i class="fas fa-laptop"></i>
                         </div>
-                        <h3>Digital Services<br><small>(à¤¡à¤¿à¤œà¤¿à¤Ÿà¤² à¤¸à¥‡à¤µà¤¾à¤à¤‚)</small></h3>
+                        <h3>Digital Services<br><small>(डिजिटल सेवाएं)</small></h3>
                         <p>Digital Services for online transactions and services.</p>
                         <button class="btn-scheme">View Schemes</button>
                     </div>
@@ -263,7 +285,7 @@
                         <input type="text" class="form-input" placeholder="Applicant Name">
                         <input type="text" class="form-input" placeholder="Loan Amount Needed">
                     </div>
-                    <button class="btn-submit">Submit Application (à¤†à¤µà¥‡à¤¦à¤¨ à¤œà¤®à¤¾ à¤•à¤°à¥‡à¤‚) <i
+                    <button class="btn-submit">Submit Application (आवेदन जमा करें) <i
                             class="fas fa-paper-plane"></i></button>
                 </div>
             </div>
@@ -281,7 +303,6 @@
                 <div class="service-box-large">
                     <h3>Training Programs</h3>
                     <p>Skill development and training programs for rural communities.</p>
-                    </div>
                 </div>
             </div>
         </div>
@@ -291,14 +312,14 @@
     <section id="pathshala" class="gramin-pathshala">
         <div class="container">
             <div class="pathshala-header">
-                <h2>à¤—à¥à¤°à¤¾à¤®à¥€à¤¨ à¤ªà¤¾à¤ à¤¶à¤¾à¤²à¤¾ / Gramin Pathshala</h2>
+                <h2>ग्रामीन पाठशाला / Gramin Pathshala</h2>
                 <p class="pathshala-subtitle">Rural School - Educating Rural Communities</p>
             </div>
 
             <div class="pathshala-content">
                 <div class="pathshala-left">
                     <div class="pathshala-image">
-                        <img src="{{ asset('assets/images/open-air-classroom-hauz-khas-delhi-india-th-jan-poor-children-being-taught-volunteers-classes-like-madrasa-36929459.webp') }}"
+                        <img src="{{ url('assets/images/open-air-classroom-hauz-khas-delhi-india-th-jan-poor-children-being-taught-volunteers-classes-like-madrasa-36929459.webp') }}"
                             alt="Gramin Pathshala Education">
                     </div>
                     <div class="pathshala-stats">
@@ -359,7 +380,7 @@
 
                     <div class="pathshala-cta">
                         <button class="btn-pathshala-primary">Learn More</button>
-                        <button class="btn-pathshala-secondary">Donate for Education</button>
+                        <a href="{{ route('website.donate') }}" class="btn-pathshala-secondary">Donate for Education</a>
                     </div>
                 </div>
             </div>
@@ -369,52 +390,52 @@
     <!-- Gallery Section -->
     <section class="gallery" id="gallery">
         <div class="container">
-            <h2>GWCT Gallery / à¤—à¥ˆà¤²à¤°à¥€</h2>
+            <h2>GWCT Gallery / गैलरी</h2>
 
             <div class="gallery-grid">
                 <!-- 1. Bal Vivah Rok Tham -->
                 <div class="gallery-item">
-                    <img src="{{ asset('assets/images/images.jpg') }}" alt="Bal Vivah Rok Tham">
-                    <div class="gallery-label">Bal Vivah Rok Tham<br><small>(à¤¬à¤¾à¤² à¤µà¤¿à¤µà¤¾à¤¹ à¤°à¥‹à¤•à¤¥à¤¾à¤®)</small></div>
+                    <img src="{{ url('assets/images/images.jpg') }}" alt="Bal Vivah Rok Tham">
+                    <div class="gallery-label">Bal Vivah Rok Tham<br><small>(बाल विवाह रोकथाम)</small></div>
                 </div>
                 <!-- 2. Gramin Pathshala -->
                 <div class="gallery-item">
-                    <img src="{{ asset('assets/images/pathshala.webp') }}" alt="Gramin Pathshala">
-                    <div class="gallery-label">Gramin Pathshala<br><small>(à¤—à¥à¤°à¤¾à¤®à¥€à¤¨ à¤ªà¤¾à¤ à¤¶à¤¾à¤²à¤¾)</small></div>
+                    <img src="{{ url('assets/images/pathshala.webp') }}" alt="Gramin Pathshala">
+                    <div class="gallery-label">Gramin Pathshala<br><small>(ग्रामीन पाठशाला)</small></div>
                 </div>
                 <!-- 3. Banking Service -->
                 <div class="gallery-item">
                     <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=250&h=250&fit=crop"
                         alt="Banking Service">
-                    <div class="gallery-label">Banking Service<br><small>(à¤¬à¥ˆà¤‚à¤•à¤¿à¤‚à¤— à¤¸à¥‡à¤µà¤¾)</small></div>
+                    <div class="gallery-label">Banking Service<br><small>(बैंकिंग सेवा)</small></div>
                 </div>
                 <!-- 4. All Type Loan Service -->
                 <div class="gallery-item">
                     <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=250&h=250&fit=crop"
                         alt="Loan Services">
-                    <div class="gallery-label">All Type Loan Service<br><small>(à¤¸à¤­à¥€ à¤ªà¥à¤°à¤•à¤¾à¤° à¤•à¥€ à¤‹à¤£ à¤¸à¥‡à¤µà¤¾)</small></div>
+                    <div class="gallery-label">All Type Loan Service<br><small>(सभी प्रकार की ऋण सेवा)</small></div>
                 </div>
                 <!-- 5. Health Card -->
                 <div class="gallery-item">
                     <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=250&h=250&fit=crop"
                         alt="Health Card">
-                    <div class="gallery-label">Health Card<br><small>(à¤†à¤°à¥‹à¤—à¥à¤¯ à¤•à¤¾à¤°à¥à¤¡)</small></div>
+                    <div class="gallery-label">Health Card<br><small>(आरोग्य कार्ड)</small></div>
                 </div>
                 <!-- 6. Skill Training -->
                 <div class="gallery-item">
                     <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=250&h=250&fit=crop"
                         alt="Skill Training">
-                    <div class="gallery-label">Skill Training<br><small>(à¤•à¥Œà¤¶à¤² à¤ªà¥à¤°à¤¶à¤¿à¤•à¥à¤·à¤£)</small></div>
+                    <div class="gallery-label">Skill Training<br><small>(कौशल प्रशिक्षण)</small></div>
                 </div>
                 <!-- Additional Gallery Items -->
                 <div class="gallery-item">
-                    <img src="{{ asset('assets/images/camp.jpeg') }}" alt="Community Camp">
-                    <div class="gallery-label">Community Camp<br><small>(à¤¸à¤¾à¤®à¥à¤¦à¤¾à¤¯à¤¿à¤• à¤¶à¤¿à¤µà¤¿à¤°)</small></div>
+                    <img src="{{ url('assets/images/camp.jpeg') }}" alt="Community Camp">
+                    <div class="gallery-label">Community Camp<br><small>(सामुदायिक शिविर)</small></div>
                 </div>
                 <div class="gallery-item">
                     <img src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=250&h=250&fit=crop"
                         alt="Agriculture Support">
-                    <div class="gallery-label">Agriculture Support<br><small>(à¤•à¥ƒà¤·à¤¿ à¤¸à¤¹à¤¾à¤¯à¤¤à¤¾)</small></div>
+                    <div class="gallery-label">Agriculture Support<br><small>(कृषि सहायता)</small></div>
                 </div>
             </div>
         </div>
@@ -427,9 +448,9 @@
                 alt="Bal Vivah Rok Tham" class="hero-image">
             <div class="hero-overlay"></div>
             <div class="hero-text">
-                <h2>à¤¬à¤¾à¤² à¤µà¤¿à¤µà¤¾à¤¹ à¤°à¥‹à¤•à¤¥à¤¾à¤®</h2>
+                <h2>बाल विवाह रोकथाम</h2>
                 <h3>Bal Vivah Rok Tham / Child Marriage Prevention</h3>
-                <p>Protecting the Future of Our Girls | à¤¹à¤®à¤¾à¤°à¥€ à¤²à¤¡à¤¼à¤•à¤¿à¤¯à¥‹à¤‚ à¤•à¤¾ à¤­à¤µà¤¿à¤·à¥à¤¯ à¤¸à¥à¤°à¤•à¥à¤·à¤¿à¤¤ à¤•à¤°à¤¨à¤¾</p>
+                <p>Protecting the Future of Our Girls | हमारी लड़कियों का भविष्य सुरक्षित करना</p>
             </div>
         </div>
 
@@ -443,7 +464,7 @@
                     <div class="stat-content">
                         <h4>2500+</h4>
                         <p>Girls Saved from Early Marriage</p>
-                        <p style="font-size: 12px; color: #666;">à¤²à¤¡à¤¼à¤•à¤¿à¤¯à¥‹à¤‚ à¤•à¥‹ à¤¬à¤¾à¤² à¤µà¤¿à¤µà¤¾à¤¹ à¤¸à¥‡ à¤¬à¤šà¤¾à¤¯à¤¾ à¤—à¤¯à¤¾</p>
+                        <p style="font-size: 12px; color: #666;">लड़कियों को बाल विवाह से बचाया गया</p>
                     </div>
                 </div>
                 <div class="stat-item">
@@ -453,7 +474,7 @@
                     <div class="stat-content">
                         <h4>1200+</h4>
                         <p>Girls Continue Education</p>
-                        <p style="font-size: 12px; color: #666;">à¤¶à¤¿à¤•à¥à¤·à¤¾ à¤œà¤¾à¤°à¥€ à¤°à¤–à¤¨à¥‡ à¤µà¤¾à¤²à¥€ à¤²à¤¡à¤¼à¤•à¤¿à¤¯à¤¾à¤‚</p>
+                        <p style="font-size: 12px; color: #666;">शिक्षा जारी रखने वाली लड़कियां</p>
                     </div>
                 </div>
                 <div class="stat-item">
@@ -463,7 +484,7 @@
                     <div class="stat-content">
                         <h4>5000+</h4>
                         <p>Families Counseled</p>
-                        <p style="font-size: 12px; color: #666;">à¤ªà¤°à¤¿à¤µà¤¾à¤°à¥‹à¤‚ à¤•à¥‹ à¤¸à¤²à¤¾à¤¹ à¤¦à¥€ à¤—à¤ˆ</p>
+                        <p style="font-size: 12px; color: #666;">परिवारों को सलाह दी गई</p>
                     </div>
                 </div>
                 <div class="stat-item">
@@ -473,7 +494,7 @@
                     <div class="stat-content">
                         <h4>80+</h4>
                         <p>Villages Covered</p>
-                        <p style="font-size: 12px; color: #666;">à¤—à¤¾à¤‚à¤µà¥‹à¤‚ à¤®à¥‡à¤‚ à¤•à¤¾à¤°à¥à¤¯à¤°à¤¤</p>
+                        <p style="font-size: 12px; color: #666;">गांवों में कार्यरत</p>
                     </div>
                 </div>
             </div>
@@ -490,66 +511,78 @@
 
             <!-- Our Interventions -->
             <div class="bal-vivah-interventions">
-                <h3 style="text-align: center; margin-bottom: 30px;">How We Work / à¤¹à¤® à¤•à¥ˆà¤¸à¥‡ à¤•à¤¾à¤® à¤•à¤°à¤¤à¥‡ à¤¹à¥ˆà¤‚</h3>
-                <div class="interventions-grid">
-                    <div class="intervention-box">
-                        <div class="intervention-icon">
-                            <i class="fas fa-book"></i>
+                <h3 style="text-align: center; margin-bottom: 30px;">How We Work / हम कैसे काम करते हैं</h3>
+                <div class="interventions-grid row">
+                    <div class="col-md-4 mb-4">
+                        <div class="intervention-box h-100">
+                            <div class="intervention-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <h4>Awareness Campaigns</h4>
+                            <p>सामुदायिक जागरूकता अभियान</p>
+                            <p style="font-size: 12px; color: #666; margin-top: 10px;">Community awareness programs about
+                                the harmful effects of child marriage and girls' education importance.</p>
                         </div>
-                        <h4>Awareness Campaigns</h4>
-                        <p>à¤¸à¤¾à¤®à¥à¤¦à¤¾à¤¯à¤¿à¤• à¤œà¤¾à¤—à¤°à¥‚à¤•à¤¤à¤¾ à¤…à¤­à¤¿à¤¯à¤¾à¤¨</p>
-                        <p style="font-size: 12px; color: #666; margin-top: 10px;">Community awareness programs about
-                            the harmful effects of child marriage and girls' education importance.</p>
                     </div>
 
-                    <div class="intervention-box">
-                        <div class="intervention-icon">
-                            <i class="fas fa-comments"></i>
+                    <div class="col-md-4 mb-4">
+                        <div class="intervention-box h-100">
+                            <div class="intervention-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <h4>Family Counseling</h4>
+                            <p>पारिवारिक परामर्श</p>
+                            <p style="font-size: 12px; color: #666; margin-top: 10px;">One-on-one counseling with families
+                                to change mindsets and stop child marriages.</p>
                         </div>
-                        <h4>Family Counseling</h4>
-                        <p>à¤ªà¤¾à¤°à¤¿à¤µà¤¾à¤°à¤¿à¤• à¤ªà¤°à¤¾à¤®à¤°à¥à¤¶</p>
-                        <p style="font-size: 12px; color: #666; margin-top: 10px;">One-on-one counseling with families
-                            to change mindsets and stop child marriages.</p>
                     </div>
 
-                    <div class="intervention-box">
-                        <div class="intervention-icon">
-                            <i class="fas fa-book"></i>
+                    <div class="col-md-4 mb-4">
+                        <div class="intervention-box h-100">
+                            <div class="intervention-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <h4>School Partnerships</h4>
+                            <p>स्कूल भागीदारी</p>
+                            <p style="font-size: 12px; color: #666; margin-top: 10px;">Working with schools to keep girls
+                                enrolled and ensure their continued education.</p>
                         </div>
-                        <h4>School Partnerships</h4>
-                        <p>à¤¸à¥à¤•à¥‚à¤² à¤­à¤¾à¤—à¥€à¤¦à¤¾à¤°à¥€</p>
-                        <p style="font-size: 12px; color: #666; margin-top: 10px;">Working with schools to keep girls
-                            enrolled and ensure their continued education.</p>
                     </div>
 
-                    <div class="intervention-box">
-                        <div class="intervention-icon">
-                            <i class="fas fa-laptop"></i>
+                    <div class="col-md-4 mb-4">
+                        <div class="intervention-box h-100">
+                            <div class="intervention-icon">
+                                <i class="fas fa-laptop"></i>
+                            </div>
+                            <h4>Skill Training</h4>
+                            <p>कौशल प्रशिक्षण</p>
+                            <p style="font-size: 12px; color: #666; margin-top: 10px;">Vocational training programs to make
+                                girls economically independent and employable.</p>
                         </div>
-                        <h4>Skill Training</h4>
-                        <p>à¤•à¥Œà¤¶à¤² à¤ªà¥à¤°à¤¶à¤¿à¤•à¥à¤·à¤£</p>
-                        <p style="font-size: 12px; color: #666; margin-top: 10px;">Vocational training programs to make
-                            girls economically independent and employable.</p>
                     </div>
 
-                    <div class="intervention-box">
-                        <div class="intervention-icon">
-                            <i class="fas fa-balance-scale"></i>
+                    <div class="col-md-4 mb-4">
+                        <div class="intervention-box h-100">
+                            <div class="intervention-icon">
+                                <i class="fas fa-balance-scale"></i>
+                            </div>
+                            <h4>Legal Support</h4>
+                            <p>कानूनी समर्थन</p>
+                            <p style="font-size: 12px; color: #666; margin-top: 10px;">Legal assistance and coordination
+                                with authorities to prevent and prosecute child marriages.</p>
                         </div>
-                        <h4>Legal Support</h4>
-                        <p>à¤•à¤¾à¤¨à¥‚à¤¨à¥€ à¤¸à¤®à¤°à¥à¤¥à¤¨</p>
-                        <p style="font-size: 12px; color: #666; margin-top: 10px;">Legal assistance and coordination
-                            with authorities to prevent and prosecute child marriages.</p>
                     </div>
 
-                    <div class="intervention-box">
-                        <div class="intervention-icon">
-                            <i class="fas fa-heart"></i>
+                    <div class="col-md-4 mb-4">
+                        <div class="intervention-box h-100">
+                            <div class="intervention-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h4>Survivor Support</h4>
+                            <p>पीड़ितों का समर्थन</p>
+                            <p style="font-size: 12px; color: #666; margin-top: 10px;">Post-rescue counseling and
+                                rehabilitation programs for girls rescued from child marriage.</p>
                         </div>
-                        <h4>Survivor Support</h4>
-                        <p>à¤ªà¥€à¤¡à¤¼à¤¿à¤¤à¥‹à¤‚ à¤•à¤¾ à¤¸à¤®à¤°à¥à¤¥à¤¨</p>
-                        <p style="font-size: 12px; color: #666; margin-top: 10px;">Post-rescue counseling and
-                            rehabilitation programs for girls rescued from child marriage.</p>
                     </div>
                 </div>
             </div>
@@ -558,12 +591,12 @@
             <div class="bal-vivah-cta"
                 style="text-align: center; padding: 40px 0; background: linear-gradient(135deg, #1b7e3a 0%, #2d9e52 100%); border-radius: 8px; margin: 40px 0; color: white;">
                 <h3 style="margin-bottom: 20px; font-size: 28px;">Join Us in Protecting Our Girls' Future</h3>
-                <p style="margin-bottom: 30px; font-size: 16px;">à¤¹à¤®à¤¾à¤°à¥€ à¤²à¤¡à¤¼à¤•à¤¿à¤¯à¥‹à¤‚ à¤•à¥‡ à¤­à¤µà¤¿à¤·à¥à¤¯ à¤•à¥€ à¤°à¤•à¥à¤·à¤¾ à¤®à¥‡à¤‚ à¤¹à¤®à¤¾à¤°à¥‡ à¤¸à¤¾à¤¥ à¤œà¥à¤¡à¤¼à¥‡à¤‚
+                <p style="margin-bottom: 30px; font-size: 16px;">हमारी लड़कियों के भविष्य की रक्षा में हमारे साथ जुड़ें
                 </p>
                 <div class="cta-buttons" style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-                    <button class="btn-primary-large"
+                    <a href="{{ route('website.donate') }}" class="btn-primary-large"
                         style="padding: 12px 30px; background: white; color: #1b7e3a; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; font-size: 16px;">Donate
-                        Now</button>
+                        Now</a>
                     <button class="btn-secondary-large"
                         style="padding: 12px 30px; background: transparent; color: white; border: 2px solid white; border-radius: 5px; font-weight: bold; cursor: pointer; font-size: 16px;">Report
                         Child Marriage</button>
@@ -586,7 +619,7 @@
                             <i class="fas fa-bullhorn"></i>
                         </div>
                         <div>
-                            <h2>ðŸ”” HIRING ALERT! ðŸ””</h2>
+                            <h2>🔔 HIRING ALERT! 🔔</h2>
                             <p>GWCT Social Welfare - Hiring & Organizational Structure Details</p>
                         </div>
                     </div>
@@ -601,9 +634,9 @@
             <!-- Hiring Positions Section -->
             <div class="hiring-content">
                 <div class="hiring-header">
-                    <h2>Available Hiring Positions / à¤‰à¤ªà¤²à¤¬à¥à¤§ à¤ªà¤¦</h2>
-                    <p>Join GWCT and make a real difference in rural communities | à¤—à¥à¤°à¤¾à¤®à¥€à¤£ à¤¸à¤®à¥à¤¦à¤¾à¤¯à¥‹à¤‚ à¤®à¥‡à¤‚ à¤µà¤¾à¤¸à¥à¤¤à¤µà¤¿à¤• à¤…à¤‚à¤¤à¤°
-                        à¤²à¤¾à¤à¤‚</p>
+                    <h2>Available Hiring Positions / उपलब्ध पद</h2>
+                    <p>Join GWCT and make a real difference in rural communities | ग्रामीण समुदायों में वास्तविक अंतर
+                        लाएं</p>
                 </div>
 
                 <!-- Positions Table -->
@@ -614,18 +647,18 @@
                                 <th><i class="fas fa-briefcase"></i> Position</th>
                                 <th><i class="fas fa-layer-group"></i> Level</th>
                                 <th><i class="fas fa-graduation-cap"></i> Min. Qualification</th>
-                                <th><i class="fas fa-info-circle"></i> Details</th>
+                                <th class="d-none"><i class="fas fa-info-circle"></i> Details</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>
                                     <strong>District Sangathan Sayojak</strong>
-                                    <p class="hindi-text">(à¤œà¤¿à¤²à¤¾ à¤¸à¤‚à¤—à¤ à¤¨ à¤¸à¤¾à¤¯à¥‹à¤œà¤•)</p>
+                                    <p class="hindi-text">(जिला संगठन सायोजक)</p>
                                 </td>
                                 <td><span class="level-badge level-district">District</span></td>
                                 <td>Matric (10th) or above</td>
-                                <td>
+                                <td class="d-none">
                                     <button onclick="openApplyModal('District Sangathan Sayojak')"
                                         class="btn-apply-small">Apply</button>
                                 </td>
@@ -633,11 +666,11 @@
                             <tr>
                                 <td>
                                     <strong>Block Sangathan Sayojak</strong>
-                                    <p class="hindi-text">(à¤¬à¥à¤²à¥‰à¤• à¤¸à¤‚à¤—à¤ à¤¨ à¤¸à¤¾à¤¯à¥‹à¤œà¤•)</p>
+                                    <p class="hindi-text">(ब्लॉक संगठन सायोजक)</p>
                                 </td>
                                 <td><span class="level-badge level-block">Block</span></td>
                                 <td>Matric (10th) or above</td>
-                                <td>
+                                <td class="d-none">
                                     <button onclick="openApplyModal('Block Sangathan Sayojak')"
                                         class="btn-apply-small">Apply</button>
                                 </td>
@@ -645,11 +678,11 @@
                             <tr>
                                 <td>
                                     <strong>Gram Sangathan Sayojak</strong>
-                                    <p class="hindi-text">(à¤—à¥à¤°à¤¾à¤® à¤¸à¤‚à¤—à¤ à¤¨ à¤¸à¤¾à¤¯à¥‹à¤œà¤•)</p>
+                                    <p class="hindi-text">(ग्राम संगठन सायोजक)</p>
                                 </td>
                                 <td><span class="level-badge level-gram">Village</span></td>
                                 <td>Matric (10th) or above</td>
-                                <td>
+                                <td class="d-none">
                                     <button onclick="openApplyModal('Gram Sangathan Sayojak')"
                                         class="btn-apply-small">Apply</button>
                                 </td>
@@ -657,11 +690,11 @@
                             <tr>
                                 <td>
                                     <strong>Program Coordinator</strong>
-                                    <p class="hindi-text">(à¤•à¤¾à¤°à¥à¤¯à¤•à¥à¤°à¤® à¤¸à¤®à¤¨à¥à¤µà¤¯à¤•)</p>
+                                    <p class="hindi-text">(कार्यक्रम समन्वयक)</p>
                                 </td>
                                 <td><span class="level-badge level-district">District</span></td>
                                 <td>Bachelor's Degree (12+2)</td>
-                                <td>
+                                <td class="d-none">
                                     <button onclick="openApplyModal('Program Coordinator')"
                                         class="btn-apply-small">Apply</button>
                                 </td>
@@ -669,11 +702,11 @@
                             <tr>
                                 <td>
                                     <strong>Gramin Pathshala (Teacher)</strong>
-                                    <p class="hindi-text">(à¤—à¥à¤°à¤¾à¤®à¥€à¤£ à¤ªà¤¾à¤ à¤¶à¤¾à¤²à¤¾ (à¤¶à¤¿à¤•à¥à¤·à¤•))</p>
+                                    <p class="hindi-text">(ग्रामीण पाठशाला (शिक्षक))</p>
                                 </td>
                                 <td><span class="level-badge level-gram">Village</span></td>
                                 <td>Matric (10th) or above</td>
-                                <td>
+                                <td class="d-none">
                                     <button onclick="openApplyModal('Gramin Pathshala (Teacher)')"
                                         class="btn-apply-small">Apply</button>
                                 </td>
@@ -681,11 +714,11 @@
                             <tr>
                                 <td>
                                     <strong>Finance Manager</strong>
-                                    <p class="hindi-text">(à¤µà¤¿à¤¤à¥à¤¤ à¤ªà¥à¤°à¤¬à¤‚à¤§à¤•)</p>
+                                    <p class="hindi-text">(वित्त प्रबंधक)</p>
                                 </td>
                                 <td><span class="level-badge level-district">District</span></td>
                                 <td>Commerce Graduate</td>
-                                <td>
+                                <td class="d-none">
                                     <button onclick="openApplyModal('Finance Manager')"
                                         class="btn-apply-small">Apply</button>
                                 </td>
@@ -699,9 +732,9 @@
                 <!-- Hiring CTA -->
                 <div class="hiring-cta">
                     <h3>Ready to Make a Difference?</h3>
-                    <p>à¤†à¤ª à¤…à¤‚à¤¤à¤° à¤²à¤¾à¤¨à¥‡ à¤•à¥‡ à¤²à¤¿à¤ à¤¤à¥ˆà¤¯à¤¾à¤° à¤¹à¥ˆà¤‚? à¤†à¤œ à¤¹à¥€ à¤†à¤µà¥‡à¤¦à¤¨ à¤•à¤°à¥‡à¤‚!</p>
+                    <p>आप अंतर लाने के लिए तैयार हैं? आज ही आवेदन करें!</p>
                     <div class="cta-buttons">
-                        <button onclick="openApplyModal('General Application')" class="btn-apply-large">Apply Now <i
+                        <button onclick="openApplyModal('General Application')" class="btn-apply-large d-none">Apply Now <i
                                 class="fas fa-paper-plane"></i></button>
                         <button class="btn-learn-more">Learn More About GWCT <i class="fas fa-arrow-right"></i></button>
                     </div>
@@ -709,13 +742,13 @@
 
                 <!-- Contact Info -->
                 <div id="contact" class="hiring-contact">
-                    <h3>Questions About Hiring? / à¤­à¤°à¥à¤¤à¥€ à¤•à¥‡ à¤¬à¤¾à¤°à¥‡ à¤®à¥‡à¤‚ à¤ªà¥à¤°à¤¶à¥à¤¨?</h3>
+                    <h3>Questions About Hiring? / भर्ती के बारे में प्रश्न?</h3>
                     <div class="contact-info">
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
                             <div>
                                 <strong>Email</strong>
-                                <p>careers@gwct.org</p>
+                                <p>careers@gwct.in</p>
                             </div>
                         </div>
                         <div class="contact-item">
@@ -956,9 +989,6 @@
         }
 
         .interventions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
             margin-top: 30px;
         }
 
@@ -1561,33 +1591,196 @@
             }
         }
 
-        /* Mobile Navigation Fixes */
-        @media (max-width: 992px) {
-            .navbar {
-                display: block !important;
-                background: linear-gradient(135deg, #1b7e3a 0%, #1e3a5f 100%) !important;
+        /* Fixed Grid Layout for Exact 3 Columns */
+        .objectives-grid.row, .interventions-grid.row {
+            display: grid !important;
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 25px !important;
+            margin: 0 !important;
+        }
+        .objectives-grid .col-md-4, .interventions-grid .col-md-4 {
+            width: 100% !important;
+            max-width: 100% !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        @media (max-width: 991px) {
+            .objectives-grid.row, .interventions-grid.row {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 20px !important;
+            }
+        }
+        @media (max-width: 768px) {
+            .objectives-grid.row, .interventions-grid.row {
+                grid-template-columns: 1fr !important;
+                gap: 15px !important;
+            }
+        }
+
+        /* ========== HERO BANNER STYLES ========== */
+
+        /* Desktop: Full screen hero */
+        .hero {
+            position: relative !important;
+            width: 100vw !important;
+            height: 90vh !important;
+            min-height: 600px !important;
+            overflow: hidden !important;
+            display: block !important;
+        }
+        .hero .carousel,
+        .hero .carousel-item {
+            position: absolute !important;
+            inset: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+        }
+        .hero-img {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            object-position: center center !important;
+            display: block !important;
+        }
+
+        /* Desktop slide-content: glassmorphism pill overlaid on image */
+        .desktop-slide-content {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            position: absolute !important;
+            bottom: 60px !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            width: auto !important;
+            min-width: 350px;
+            max-width: 600px;
+            background: rgba(0, 0, 0, 0.45) !important;
+            backdrop-filter: blur(14px) !important;
+            -webkit-backdrop-filter: blur(14px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            border-radius: 60px !important;
+            padding: 18px 44px !important;
+            text-align: center !important;
+            z-index: 10 !important;
+            animation: heroBadgeFlyIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both !important;
+        }
+        @keyframes heroBadgeFlyIn {
+            from { opacity: 0; transform: translateX(-50%) translateY(25px); }
+            to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+        .slide-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: rgba(255, 222, 89, 0.18);
+            border: 1px solid rgba(255, 222, 89, 0.4);
+            color: #ffde59;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            border-radius: 30px;
+            margin-bottom: 10px;
+        }
+        .desktop-slide-content h2 {
+            font-size: 26px !important;
+            font-weight: 800 !important;
+            color: #ffffff !important;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.6) !important;
+            margin: 0 0 6px 0 !important;
+            letter-spacing: 0.5px !important;
+        }
+        .desktop-slide-content p {
+            font-size: 15px !important;
+            color: rgba(255,255,255,0.90) !important;
+            margin: 0 !important;
+            font-weight: 400 !important;
+        }
+
+        /* Hero main content (title + CTA) - desktop centered */
+        .hero-overlay {
+            background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.50) 100%) !important;
+        }
+        .hero-content {
+            position: absolute !important;
+            inset: 0 !important;
+            margin: 0 auto !important;
+            max-width: 1200px !important;
+            width: 100% !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            padding: 0 40px !important;
+            z-index: 5 !important;
+        }
+        .carousel-indicators {
+            bottom: 16px !important;
+            z-index: 20 !important;
+        }
+        .carousel-nav {
+            z-index: 20 !important;
+        }
+
+        /* Mobile caption strip - hidden on desktop */
+        .hero-mobile-caption {
+            display: none;
+        }
+
+        /* ========== MOBILE: Image full width, caption BELOW ========== */
+        @media (max-width: 768px) {
+            .hero {
+                height: 55vw !important;
+                min-height: 220px !important;
+                max-height: 360px !important;
             }
 
-            .menu-toggle {
+            /* Hide desktop overlaid slide content on mobile */
+            .desktop-slide-content {
+                display: none !important;
+            }
+
+            /* Hide desktop hero-content (title+CTA) on mobile */
+            .hero-content {
+                display: none !important;
+            }
+
+            /* Show mobile caption strip below the banner */
+            .hero-mobile-caption {
                 display: flex !important;
-                color: white !important;
-                visibility: visible !important;
-                opacity: 1 !important;
+                align-items: center;
+                gap: 14px;
+                background: linear-gradient(135deg, #1b7e3a 0%, #145c2c 100%);
+                color: white;
+                padding: 16px 20px;
+                width: 100%;
             }
-
-            .nav-brand-mobile {
-                display: block !important;
-                color: white !important;
-                visibility: visible !important;
-                opacity: 1 !important;
+            .mobile-caption-icon {
+                background: rgba(255,255,255,0.15);
+                width: 44px;
+                height: 44px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 18px;
+                color: #ffde59;
+                flex-shrink: 0;
             }
-
-            .nav-menu {
-                display: none;
+            .mobile-caption-text h3 {
+                font-size: 16px;
+                font-weight: 700;
+                margin: 0 0 3px 0;
+                color: #ffde59;
             }
-
-            .nav-menu.active {
-                display: flex !important;
+            .mobile-caption-text p {
+                font-size: 13px;
+                margin: 0;
+                color: rgba(255,255,255,0.88);
+                line-height: 1.4;
             }
         }
     </style>
